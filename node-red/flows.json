@@ -1,0 +1,293 @@
+[
+    {
+        "id": "c90b5de1bb6df815",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b00590011a4c9070",
+        "type": "mqtt-broker",
+        "name": "Mosquitto",
+        "broker": "192.168.1.55",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "b9bdd9678db11013",
+        "type": "influxdb",
+        "hostname": "192.168.1.55",
+        "port": "8086",
+        "protocol": "http",
+        "database": "Sensor1",
+        "name": "InfluxDB",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://192.168.1.55:8086/",
+        "rejectUnauthorized": false
+    },
+    {
+        "id": "171daefe797ab990",
+        "type": "mqtt-broker",
+        "name": "Servidor Externo",
+        "broker": "",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "02977d21d70e31af",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "InfluxDB Amazon",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://amazon:8086",
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "914c671317d06b7a",
+        "type": "mqtt in",
+        "z": "c90b5de1bb6df815",
+        "name": "",
+        "topic": "iot/casa1/piso1/sensor1/temperatura1",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "b00590011a4c9070",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 240,
+        "wires": [
+            [
+                "1c6c01a84f448786",
+                "1f6978df6ec103cb"
+            ]
+        ]
+    },
+    {
+        "id": "1c6c01a84f448786",
+        "type": "debug",
+        "z": "c90b5de1bb6df815",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "1f6978df6ec103cb",
+        "type": "change",
+        "z": "c90b5de1bb6df815",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{ \t    \"value\" : msg.payload.value\t} ",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 240,
+        "wires": [
+            [
+                "2902b790c6b25d75",
+                "8b21dae628da1712"
+            ]
+        ]
+    },
+    {
+        "id": "2902b790c6b25d75",
+        "type": "debug",
+        "z": "c90b5de1bb6df815",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "c59b3ed5e5e27375",
+        "type": "mqtt out",
+        "z": "c90b5de1bb6df815",
+        "name": "EC2",
+        "topic": "iot/casa1/piso1/sensor1/temperatura1",
+        "qos": "2",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "171daefe797ab990",
+        "x": 1130,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "8b21dae628da1712",
+        "type": "influxdb out",
+        "z": "c90b5de1bb6df815",
+        "influxdb": "b9bdd9678db11013",
+        "name": "Temperatura1",
+        "measurement": "temperatura1",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "autogen",
+        "org": "Labsti",
+        "bucket": "Sensor1",
+        "x": 720,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "531f67d34361fee9",
+        "type": "mqtt in",
+        "z": "c90b5de1bb6df815",
+        "name": "",
+        "topic": "iot/casa1/piso1/sensor1/pressure",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "b00590011a4c9070",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 340,
+        "wires": [
+            [
+                "50eccd2cfb57b271",
+                "f5190139a65a7504"
+            ]
+        ]
+    },
+    {
+        "id": "50eccd2cfb57b271",
+        "type": "change",
+        "z": "c90b5de1bb6df815",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{ \t    \"value\" : msg.payload.value\t} ",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 340,
+        "wires": [
+            [
+                "033ff94e80a6e4d4"
+            ]
+        ]
+    },
+    {
+        "id": "033ff94e80a6e4d4",
+        "type": "influxdb out",
+        "z": "c90b5de1bb6df815",
+        "influxdb": "b9bdd9678db11013",
+        "name": "Presión",
+        "measurement": "Presion1",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "autogen",
+        "org": "Labsti",
+        "bucket": "Sensor1",
+        "x": 700,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "f5190139a65a7504",
+        "type": "debug",
+        "z": "c90b5de1bb6df815",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 420,
+        "wires": []
+    }
+]

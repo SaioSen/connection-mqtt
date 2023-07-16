@@ -1,0 +1,72 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@8.19.4
+2 info using node@v16.20.0
+3 timing npm:load:whichnode Completed in 1ms
+4 timing config:load:defaults Completed in 2ms
+5 timing config:load:file:/usr/local/lib/node_modules/npm/npmrc Completed in 1ms
+6 timing config:load:builtin Completed in 1ms
+7 warn config production Use `--omit=dev` instead.
+8 timing config:load:cli Completed in 4ms
+9 timing config:load:env Completed in 1ms
+10 timing config:load:file:/data/.npmrc Completed in 1ms
+11 timing config:load:project Completed in 4ms
+12 timing config:load:file:/usr/src/node-red/.npmrc Completed in 1ms
+13 timing config:load:user Completed in 1ms
+14 timing config:load:file:/usr/local/etc/npmrc Completed in 5ms
+15 timing config:load:global Completed in 5ms
+16 timing config:load:validate Completed in 0ms
+17 timing config:load:credentials Completed in 1ms
+18 timing config:load:setEnvs Completed in 1ms
+19 timing config:load Completed in 21ms
+20 timing npm:load:configload Completed in 21ms
+21 timing npm:load:mkdirpcache Completed in 4ms
+22 timing npm:load:mkdirplogs Completed in 5ms
+23 verbose title npm install node-red-contrib-interra-temperature@0.0.3
+24 verbose argv "install" "--no-audit" "--no-update-notifier" "--no-fund" "--save" "--save-prefix" "~" "--production" "--engine-strict" "node-red-contrib-interra-temperature@0.0.3"
+25 timing npm:load:setTitle Completed in 2ms
+26 timing config:load:flatten Completed in 5ms
+27 timing npm:load:display Completed in 8ms
+28 verbose logfile logs-max:10 dir:/data/.npm/_logs
+29 verbose logfile /data/.npm/_logs/2023-07-16T20_52_50_395Z-debug-0.log
+30 timing npm:load:logFile Completed in 20ms
+31 timing npm:load:timers Completed in 0ms
+32 timing npm:load:configScope Completed in 0ms
+33 timing npm:load Completed in 63ms
+34 timing arborist:ctor Completed in 2ms
+35 silly logfile done cleaning log files
+36 timing idealTree:init Completed in 392ms
+37 timing idealTree:userRequests Completed in 3ms
+38 silly idealTree buildDeps
+39 silly fetch manifest node-red-contrib-interra-temperature@0.0.3
+40 timing arborist:ctor Completed in 0ms
+41 http fetch GET 200 https://registry.npmjs.org/node-red-contrib-interra-temperature 1134ms (cache miss)
+42 silly placeDep ROOT node-red-contrib-interra-temperature@ OK for: node-red-project@0.0.1 want: 0.0.3
+43 timing idealTree:#root Completed in 1146ms
+44 timing idealTree:node_modules/node-red-contrib-interra-temperature Completed in 0ms
+45 timing idealTree:buildDeps Completed in 1149ms
+46 timing idealTree:fixDepFlags Completed in 1ms
+47 timing idealTree Completed in 1549ms
+48 timing command:install Completed in 1559ms
+49 verbose stack TypeError: Cannot convert undefined or null to object
+49 verbose stack     at Function.keys (<anonymous>)
+49 verbose stack     at module.exports (/usr/local/lib/node_modules/npm/node_modules/npm-pick-manifest/lib/index.js:213:22)
+49 verbose stack     at RegistryFetcher.manifest (/usr/local/lib/node_modules/npm/node_modules/pacote/lib/registry.js:125:22)
+49 verbose stack     at async Arborist.[nodeFromEdge] (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:1061:19)
+49 verbose stack     at async Arborist.[buildDepStep] (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:930:11)
+49 verbose stack     at async Arborist.buildIdealTree (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:211:7)
+49 verbose stack     at async Promise.all (index 1)
+49 verbose stack     at async Arborist.reify (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:154:5)
+49 verbose stack     at async Install.exec (/usr/local/lib/node_modules/npm/lib/commands/install.js:145:5)
+49 verbose stack     at async module.exports (/usr/local/lib/node_modules/npm/lib/cli.js:78:5)
+50 verbose cwd /data
+51 verbose Linux 5.10.16.3-microsoft-standard-WSL2
+52 verbose node v16.20.0
+53 verbose npm  v8.19.4
+54 error Cannot convert undefined or null to object
+55 verbose exit 1
+56 timing npm Completed in 1743ms
+57 verbose unfinished npm timer reify 1689540770574
+58 verbose unfinished npm timer reify:loadTrees 1689540770580
+59 verbose code 1
+60 error A complete log of this run can be found in:
+60 error     /data/.npm/_logs/2023-07-16T20_52_50_395Z-debug-0.log
